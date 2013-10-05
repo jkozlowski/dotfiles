@@ -29,13 +29,7 @@ install_dotfiles () {
 
   for source in `find $DOTFILES_ROOT -maxdepth 1 ! -type l   ! -name README.md ! -iname ".*" ! -name scripts`
   do
-    source_basename=`basename "$source"`
-    if [[ $source_basename == .* ]]
-    then
-      dest="$HOME/$source_basename"
-    else
-      dest="$HOME/.$source_basename"   
-    fi
+    dest="$HOME/.`basename \"$source\"`"   
       
     if [ -L $dest ] && [ $(readlink $dest) = $source ] 
     then
