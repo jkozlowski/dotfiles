@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+#
+# bootstrap installs things.
+# parts stolen from https://github.com/holman/dotfiles/blob/master/script/bootstrap
+
+set -e
+
+DOTFILES_ROOT="$( cd "$( dirname "$0" )/../" && pwd )"
+
+# prints "$1\n"
+info () {
+  printf "  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+# prints "$1\n" in a nice green color
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+# links $1 to $2 with a nice success message
+link_files () {
+  ln -s $1 $2
+  success "linked $1 to $2"
+}
+
+install_dotfiles () {
+
+  info 'installing dotfiles'
+
+  for source in `find $DOTFILES_ROOT -maxdepth 1 ! -type l   ! -name README.md ! -iname ".*" ! -name scripts`
+  do
+    source_basename=`basename "$source"`
+    if [[ $source_basename == .* ]]
+    then
+      dest="$HOME/$source_basename"
+    else
+      dest="$HOME/.$source_basename"   
+    fi
+      
+    if [ -L $dest ] && [ $(readlink $dest) = $source ] 
+    then
+      success "link `basename $dest` already exists and points to the right place"
+    elif [ -f $dest ] || [ -d $dest ]
+    then
+	info "`basename $dest` already exists: will move to `basename $dest`_backup"
+	mv "$dest" "${dest}_backup" 
+    else
+        link_files $source $dest
+    fi
+
+  done
+
+}
+
+install_dotfiles
