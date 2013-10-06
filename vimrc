@@ -4,13 +4,8 @@ filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required! 
+" Manage bundles  
 Bundle 'gmarik/vundle'
-
-" My Bundles here:
-"
-" original repos on github
 Bundle 'zhaocai/GoldenView.Vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'eagletmt/ghcmod-vim'
@@ -38,28 +33,10 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'mattdenner/vim-scala'
 Bundle 'dag/vim2hs'
 Bundle 'Shougo/vimproc.vim'
-
-" vim-scripts repos
 Bundle 'a.vim'
-
-" non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (ie. when working on your own plugin)
-" Bundle 'file:///Users/gmarik/path/to/plugin'
-" ...
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 filetype plugin indent on     " required!
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-"
-
 syntax on
 filetype on
 filetype plugin indent on
@@ -83,7 +60,11 @@ set foldcolumn=1
 
 let g:tagbar_width=28
 
-colorscheme two2tango
+" colorscheme molokai
+" colorscheme darktango
+" colorscheme jhdark
+" colorscheme darktango
+colorscheme mdark
 
 set autoread
 set autowrite
@@ -115,9 +96,35 @@ nnoremap <m-Up> :cprevious<cr>zvzz
 
 let g:ctrlp_map = '<c-t>'
 
+" start with NerdTree
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" remap leader
+let mapleader=","
+
+" Reload Vimrc
+map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+" open/close the quickfix window
+nmap <leader>c :copen<CR>
+nmap <leader>cc :cclose<CR>
+
+" Powerline setup
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+set laststatus=2
+
+" Goldenview
+" 1. split to tiled windows
+nmap <silent> <C-L>  <Plug>GoldenViewSplit
+
 " haskell stuff
 let g:haskell_conceal_wide = 1
 let g:neocomplcache_enable_at_startup = 1
+
+" Show linenumbers
+set nu
 
 let g:haddock_browser="xdg-open"
 let g:haddock_indexfiledir="/home/nicolas/.vim/"
