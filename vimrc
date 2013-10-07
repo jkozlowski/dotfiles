@@ -8,6 +8,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'zhaocai/GoldenView.Vim'
 Bundle 'kien/ctrlp.vim'
+Bundle 'eagletmt/tinytest'
+Bundle 'Shougo/vimproc.vim'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'gregsexton/gitv'
@@ -32,7 +34,6 @@ Bundle 'Twinside/vim-haskellConceal'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'mattdenner/vim-scala'
 Bundle 'dag/vim2hs'
-Bundle 'Shougo/vimproc.vim'
 Bundle 'a.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
@@ -48,8 +49,10 @@ set cindent
 set tabstop=8
 set expandtab
 set noerrorbells
-set backup
 set ruler
+set nobackup
+set nowritebackup
+set noswapfile
 set showmode
 highlight ModeMsg guibg=blue guifg=green gui=NONE cterm=NONE term=NONE
 set wildignore=*.o,*.obj,*.class,*~,.bak,*.pyc,*.pyo,_build,dist,cabal-dev
@@ -60,14 +63,14 @@ set foldcolumn=1
 
 let g:tagbar_width=28
 
-" colorscheme molokai
+colorscheme molokai
 " colorscheme darktango
 " colorscheme jhdark
 " colorscheme darktango
-colorscheme mdark
+" colorscheme mdark
 
 set autoread
-set autowrite
+set noautowrite
 set nohlsearch
 set incsearch
 set showmatch
@@ -139,7 +142,6 @@ let g:ghcmod_ghc_options = ['-isrc', '-ibin']
 let g:ghcmod_use_basedir = getcwd()
 
 au FileType haskell nnoremap <leader>t :GhcModType<cr>
-au FileType haskell nnoremap <leader>T :GhcModTypeInsert<cr>
 
 let g:necoghc_enable_detailed_browse = 1
 
