@@ -46,7 +46,10 @@ set hidden
 set textwidth=80
 set autoindent
 set cindent
-set tabstop=8
+set smartindent
+set shiftwidth=4
+set expandtab
+set tabstop=4
 set expandtab
 set noerrorbells
 set ruler
