@@ -37,3 +37,5 @@ Bundle 'dag/vim2hs'
 Bundle 'a.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'git://git.wincent.com/command-t.git'
+
+filetype plugin indent on     " required!
