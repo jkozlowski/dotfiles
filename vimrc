@@ -87,6 +87,9 @@ nmap <leader>cc :cclose<CR>
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
 set laststatus=2
 
+" Fast saving
+nmap <leader>w :w!<cr>
+
 " Goldenview
 " 1. split to tiled windows
 nmap <silent> <C-L>  <Plug>GoldenViewSplit
