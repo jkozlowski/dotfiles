@@ -117,3 +117,6 @@ au FileType haskell nnoremap <leader>t :GhcModType<cr>
 
 let g:necoghc_enable_detailed_browse = 1
 
+" recommended: vim spawns a scion instance itself:
+let g:scion_connection_setting = [ 'scion', "/home/vagrant/.cabal/bin/scion-server"]
+
