@@ -69,6 +69,7 @@ nnoremap <m-Up> :cprevious<cr>zvzz
 let g:ctrlp_map = '<c-t>'
 
 " start with NerdTree
+let g:nerdtree_tabs_open_on_console_startup=1
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif

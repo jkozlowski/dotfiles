@@ -39,5 +39,6 @@ Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'nominolo/scion', {'rtp': 'vim_runtime_path'}
 Bundle 'vim-scripts/hlint'
+Bundle 'jistr/vim-nerdtree-tabs'
 
 filetype plugin indent on     " required!
