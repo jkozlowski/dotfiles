@@ -102,6 +102,7 @@ let g:neocomplcache_enable_at_startup = 1
 " Show linenumbers
 set nu
 
+" Haskell
 let g:haddock_browser="xdg-open"
 let g:haddock_indexfiledir="/home/nicolas/.vim/"
 
@@ -118,6 +119,8 @@ au FileType haskell nnoremap <leader>t :GhcModType<cr>
 
 let g:necoghc_enable_detailed_browse = 1
 
-" recommended: vim spawns a scion instance itself:
-let g:scion_connection_setting = [ 'scion', "/home/vagrant/.cabal/bin/scion-server"]
+" Haskell devtools
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 

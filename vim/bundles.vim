@@ -12,10 +12,8 @@ Bundle 'eagletmt/tinytest'
 Bundle 'mattn/gist-vim'
 Bundle 'gregsexton/gitv'
 Bundle 'sjl/gundo.vim'
-Bundle 'lukerandall/haskellmode-vim'
 Bundle 'vim-scripts/hgrev'
 Bundle 'bitc/lushtags'
-Bundle 'Shougo/neocomplcache.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'ervandew/supertab'
@@ -29,10 +27,16 @@ Bundle 'tpope/vim-git'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'Twinside/vim-haskellConceal'
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'dag/vim2hs'
 Bundle 'a.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'jistr/vim-nerdtree-tabs'
+
+" Haskell bundles
+Bundle 'dag/vim2hs'
+Bundle 'lukerandall/haskellmode-vim'
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'bitc/vim-hdevtools'
 
 filetype plugin indent on     " required!
