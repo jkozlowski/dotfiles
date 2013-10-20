@@ -33,6 +33,8 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'jistr/vim-nerdtree-tabs'
 
 " Haskell bundles
+Bundle 'Shougo/vimproc.vim'
+Bundle 'eagletmt/ghcmod-vim'
 Bundle 'dag/vim2hs'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'Shougo/neocomplcache.vim'
