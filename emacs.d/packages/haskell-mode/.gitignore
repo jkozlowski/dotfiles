@@ -1,0 +1,5 @@
+*.elc
+*~
+haskell-mode.info
+haskell-mode.tmp.texi
+dir
