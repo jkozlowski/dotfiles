@@ -1,4 +1,9 @@
 ;; Package locations
+(require 'package)
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(package-initialize)
 
 (let ((default-directory (file-name-directory (or load-file-name (buffer-file-name)))))
   (add-to-list 'load-path default-directory)
@@ -10,30 +15,56 @@
   (add-to-list 'load-path (concat default-directory "/packages/cl-lib"))
   (add-to-list 'load-path (concat default-directory "/packages/flycheck"))
   (add-to-list 'load-path (concat default-directory "/packages/color-theme"))
-  (add-to-list 'load-path (concat default-directory "/packages/zenburn")))
+  (add-to-list 'load-path (concat default-directory "/packages/zenburn"))
+  (add-to-list 'load-path (concat default-directory "/packages/ghc"))
+  (add-to-list 'load-path (concat default-directory "/packages/projectile")))
+
+;; Ido
+(require 'ido)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode t)
+
+(require 'projectile)
+(projectile-global-mode)
+(eval-after-load "projectile"
+  '(progn
+     (define-key projectile-mode-map (kbd "C-t") 'projectile-find-file)))
 
 ;; Loading dependencies
+(autoload 'ghc-init "ghc" nil t)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 
 (load "haskell-mode-autoloads.el")
+
 (require 'cl-lib)
 (require 'auto-complete)
 (require 'auto-complete-config)
-(require 'flycheck)
+;;(require 'flycheck)
 (require 'fpco-mode)
 ;; Optional
 (require 'color-theme)
 (require 'zenburn)
 
 ;; Activates haskell mode for approprioate extensions
-
+(setq haskell-stylish-on-save t)
 (add-to-list 'auto-mode-alist (cons "\\.hs\\'" 'haskell-mode))
 (add-to-list 'auto-mode-alist (cons "\\.cabal\\'" 'haskell-cabal-mode))
 (add-to-list 'auto-mode-alist '("\\.hcr\\'" . haskell-core-mode))
 
 ;; Haskell-mode configuration
-
-(add-hook 'haskell-mode-hook 'auto-complete-mode)
-(add-hook 'haskell-mode-hook 'flycheck-mode)
+;;(eval-after-load "haskell-mode"
+;;  '(progn
+;;    (define-key haskell-mode-map (kbd "C-x C-d") nil)
+;;    (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+;;    (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
+;;    (define-key haskell-mode-map (kbd "C-c C-b") 'haskell-interactive-switch)
+;;    (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
+;;    (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
+;;    (define-key haskell-mode-map (kbd "C-c M-.") nil)
+;;    (define-key haskell-mode-map (kbd "C-c C-d") nil)))
+;;(add-hook 'haskell-mode-hook 'auto-complete-mode)
+;;(add-hook 'haskell-mode-hook 'flycheck-mode)
 ;; (add-hook 'haskell-mode-hook 'fpco-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (ac-config-default)

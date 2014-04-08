@@ -3,3 +3,5 @@ vim/bundle/*
 *.swp
 emacs.d/ac-comphist.dat
 emacs.d/elpa
+# projectile
+emacs.d/projectile-bookmarks.eld
