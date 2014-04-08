@@ -34,9 +34,14 @@
 
 (add-hook 'haskell-mode-hook 'auto-complete-mode)
 (add-hook 'haskell-mode-hook 'flycheck-mode)
-(add-hook 'haskell-mode-hook 'fpco-mode)
+;; (add-hook 'haskell-mode-hook 'fpco-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (ac-config-default)
+(eval-after-load "haskell-mode"
+    '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
+
+(eval-after-load "haskell-cabal"
+    '(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile))
 
 ;; General Emacs customizations (optional)
 
@@ -50,4 +55,16 @@
 
 ;; FP Complete configuration
 
-(fpco/start)
+;;(fpco/start)
+;;(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+;; '(safe-local-variable-values (quote ((eval set (make-local-variable (quote fpco-root)) (expand-file-name (locate-dominating-file buffer-file-name ".dir-locals.el"))) (fpco-pid . 19258)))))
+;;(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+;; )

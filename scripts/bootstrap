@@ -46,4 +46,9 @@ install_dotfiles () {
 
 }
 
+generate_fpco () {
+  fpco-api config
+}
+
 install_dotfiles
+generate_fpco
