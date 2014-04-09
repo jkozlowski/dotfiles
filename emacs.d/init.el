@@ -25,11 +25,33 @@
 (setq ido-everywhere t)
 (ido-mode t)
 
+;; Save status
+;;(desktop-save-mode 1)
+
+;; mouse support from http://stackoverflow.com/questions/5710334/how-can-i-get-mouse-selection-to-work-in-emacs-and-iterm2-on-mac
+(require 'mouse)
+(xterm-mouse-mode t)
+(defun track-mouse (e)) 
+(global-set-key [mouse-4] (lambda ()
+                              (interactive)
+                              (scroll-down 1)))
+(global-set-key [mouse-5] (lambda ()
+                              (interactive)
+                              (scroll-up 1)))
+
+;; Nice selecting
+ (if (fboundp 'pc-selection-mode)
+        (pc-selection-mode)
+      (require 'pc-select))
+
 (require 'projectile)
 (projectile-global-mode)
 (eval-after-load "projectile"
   '(progn
      (define-key projectile-mode-map (kbd "C-t") 'projectile-find-file)))
+
+;; I hate tabs!
+(setq-default indent-tabs-mode nil)
 
 ;; Loading dependencies
 (autoload 'ghc-init "ghc" nil t)
@@ -99,3 +121,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
 ;; )
+
