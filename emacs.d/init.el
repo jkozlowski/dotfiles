@@ -25,8 +25,11 @@
 (setq ido-everywhere t)
 (ido-mode t)
 
-;; Save status
-;;(desktop-save-mode 1)
+;; Put backup copied into temp
+(setq backup-directory-alist
+          `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+          `((".*" ,temporary-file-directory t)))
 
 ;; mouse support from http://stackoverflow.com/questions/5710334/how-can-i-get-mouse-selection-to-work-in-emacs-and-iterm2-on-mac
 (require 'mouse)
@@ -64,6 +67,7 @@
 (require 'auto-complete-config)
 ;;(require 'flycheck)
 (require 'fpco-mode)
+(require 'sr-speedbar)
 ;; Optional
 (require 'color-theme)
 (require 'zenburn)
