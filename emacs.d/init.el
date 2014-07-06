@@ -17,7 +17,8 @@
   (add-to-list 'load-path (concat default-directory "/packages/color-theme"))
   (add-to-list 'load-path (concat default-directory "/packages/zenburn"))
   (add-to-list 'load-path (concat default-directory "/packages/ghc"))
-  (add-to-list 'load-path (concat default-directory "/packages/projectile")))
+  (add-to-list 'load-path (concat default-directory "/packages/projectile"))
+  (add-to-list 'load-path (concat default-directory "/package/tabbar-mode")))
 
 ;; Ido
 (require 'ido)
@@ -41,6 +42,26 @@
 (global-set-key [mouse-5] (lambda ()
                               (interactive)
                               (scroll-up 1)))
+
+;; The CUA mode will do 4 things:
+;; 1) {Cut, Copy, Paste, Undo} have {X, C, V, Z} keys.
+;; 2) Text selection will be highlighted. (this is default starting with emacs 23) 〔☛ New Features in Emacs 23〕
+;; 3) When there's a text selection, typing will over-ride it.
+;; 4) Text selection can be done by holding down the ⇧ Shift key and press a arrow key. (default behavior starting with emacs 23)
+(cua-mode 1)
+
+;; How to have emacs highlight text selections?
+(transient-mark-mode 1) ; highlight text selection
+(delete-selection-mode 1) ; delete seleted text when typing
+
+;; How to show the cursor's column position?
+(column-number-mode 1)
+
+(tabbar-mode 1)
+
+(global-hl-line-mode 1) ; turn on highlighting current line
+
+(setq pop-up-frames t) ; t for true, nil for false
 
 ;; Nice selecting
  (if (fboundp 'pc-selection-mode)
